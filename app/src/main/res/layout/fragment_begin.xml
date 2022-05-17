@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BeginFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/black">
+        <ImageView
+            android:layout_marginTop="100dp"
+            android:id="@+id/img_login"
+            android:src="@drawable/the_movie"
+            android:layout_width="400dp"
+            android:layout_height="250dp" />
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/btn_loginbegin"
+            android:text="Login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:backgroundTint="@color/brow"
+            tools:ignore="DuplicateIds" />
+        <Button
+            android:id="@+id/btn_registerbegin"
+            android:text="Register"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:backgroundTint="@color/brow"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

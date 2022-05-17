@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/img_login"
+            android:src="@drawable/person"
+            android:layout_marginTop="8dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp" />
+        <Button
+            android:id="@+id/btn_imgprof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unggah Foto"
+            android:background="@null"
+            android:backgroundTint="@color/brow"/>
+        <TextView
+            android:id="@+id/name_login"
+            android:layout_marginTop="2dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/et_update_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/et_update_email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubah Password"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/et_ubah_password"
+            android:inputType="numberPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_updet"
+            android:text="Save"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:backgroundTint="@color/brow"/>
+
+    </LinearLayout>
+
+</FrameLayout>
