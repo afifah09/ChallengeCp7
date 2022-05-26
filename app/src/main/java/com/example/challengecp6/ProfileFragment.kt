@@ -25,12 +25,14 @@ import com.example.challengecp6.StorageUtils
 import com.example.challengecp6.databinding.FragmentProfileBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import java.util.*
 
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-    lateinit var authRepository: AuthRepository
+    //lateinit var authRepository: AuthRepository
+    private val authRepository by inject<AuthRepository>()
     private var imageUri: Uri? = null
     private var imageSource = -1
     var userid : Int? = -1
@@ -44,11 +46,10 @@ class ProfileFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        authRepository = AuthRepository(requireContext())
         val sharedPreference = context?.getSharedPreferences("SHARED_FILE", Context.MODE_PRIVATE)
         var email = ""
 
-        authRepository.emailPreferences.observe(viewLifecycleOwner){
+        authRepository.emailPreferences().observe(viewLifecycleOwner){
             email=it
             Log.d("email", "onViewCreated:$it ")
             getUser(email)

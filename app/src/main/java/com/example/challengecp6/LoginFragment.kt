@@ -14,12 +14,14 @@ import com.example.challengecp6.R
 import com.example.challengecp6.databinding.FragmentLoginBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     //private var myDatabase: MyDatabase? = null
-    lateinit var authRepository: AuthRepository
+    //lateinit var authRepository: AuthRepository
+    private val authRepository by inject<AuthRepository>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,10 +34,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // myDatabase = MyDatabase.getInstance(requireContext())
-        authRepository = AuthRepository(requireContext())
         val sharedPreference = context?.getSharedPreferences("SHARED_FILE", Context.MODE_PRIVATE)
 
-        authRepository.emailPreferences.observe(viewLifecycleOwner){
+        authRepository.emailPreferences().observe(viewLifecycleOwner){
             if (it==""){
                 //tombol tegister
                 binding.tvSignUp.setOnClickListener {

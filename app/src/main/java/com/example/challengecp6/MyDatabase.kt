@@ -9,26 +9,6 @@ import androidx.room.RoomDatabase
 abstract class MyDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
 
-    companion object{
-
-        @Volatile
-        private var INSTANCE: MyDatabase? = null
-
-        fun getInstance(context: Context): MyDatabase?{
-            if (INSTANCE == null){
-                synchronized(MyDatabase::class){
-                    INSTANCE = Room.databaseBuilder(context.applicationContext
-                        , MyDatabase::class.java, "mydatabase.db").fallbackToDestructiveMigration().build()
-                }
-            }
-            return INSTANCE
-        }
-
-        fun destroyInstance(){
-            INSTANCE = null
-        }
-
-    }
 
 
 }

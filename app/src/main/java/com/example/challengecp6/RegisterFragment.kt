@@ -10,12 +10,14 @@ import androidx.navigation.findNavController
 import com.example.challengecp6.databinding.FragmentRegisterBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     //private var myDatabase: MyDatabase? = null
-    lateinit var authRepository: AuthRepository
+    //lateinit var authRepository: AuthRepository
+    private val authRepository by inject<AuthRepository>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +30,6 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //myDatabase = MyDatabase.getInstance(requireContext())
-        authRepository = AuthRepository(requireContext())
         binding.btnRegister.setOnClickListener {
             val user = User(
                 null,

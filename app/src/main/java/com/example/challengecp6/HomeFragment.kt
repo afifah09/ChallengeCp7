@@ -15,12 +15,16 @@ import com.example.challengecp6.R
 import com.example.challengecp6.databinding.FragmentHomeBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    lateinit var homeViewModel: HomeViewModel
-    lateinit var authRepository: AuthRepository
+    //lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel by viewModel<HomeViewModel>()
+    //lateinit var authRepository: AuthRepository
+    private val authRepository by inject<AuthRepository>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +37,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val sharedPreference = context?.getSharedPreferences("SHARED_FILE", Context.MODE_PRIVATE)
-        homeViewModel=ViewModelProvider(requireActivity())[HomeViewModel::class.java]
         //menampilkan list movie dari api
         homeViewModel.dataMovie.observe(viewLifecycleOwner){
             showlistmovie(it.results)
@@ -42,7 +45,6 @@ class HomeFragment : Fragment() {
         binding.homeProfile.setOnClickListener{
             it.findNavController().navigate(R.id.action_fragmentHome_to_profileFragment)
         }
-        authRepository= AuthRepository(requireContext())
         //tombol untuk logout
         binding.btnOut.setOnClickListener{
            lifecycleScope.launch(Dispatchers.IO){

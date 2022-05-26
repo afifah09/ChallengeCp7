@@ -9,10 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.challengecp6.databinding.FragmentDetailBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment(){
     private lateinit var binding: FragmentDetailBinding
-    lateinit var homeViewModel: HomeViewModel
+    //lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel by viewModel<HomeViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,7 +25,6 @@ class DetailFragment : Fragment(){
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel= ViewModelProvider(requireActivity())[HomeViewModel::class.java]
         homeViewModel.detailMovie.observe(viewLifecycleOwner){
             //menampilkan detail movie
             binding.apply {
